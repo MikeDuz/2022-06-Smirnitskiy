@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'com.github.johnrengelman.shadow'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    implementation "com.google.guava:guava"
+}
+
+shadowJar {
+    archiveBaseName.set('HelloOtus')
+    archiveVersion.set('0.1')
+    archiveClassifier.set('')
+    manifest {
+        attributes 'Main-Class': 'HelloOtus'
+    }
+}
+
+tasks.build.dependsOn tasks.shadowJar
